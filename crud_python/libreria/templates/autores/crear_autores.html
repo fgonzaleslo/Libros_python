@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %} Agregar nuevo autor {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        crear un autor
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del Autor</h4>
+        {% include 'autores/formulario.html' %}
+
+
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

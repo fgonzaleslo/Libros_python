@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de libros {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'reporte_excel_libro' %}" role="button">Exportar EXCEL</a> | <a name="" id="" class="btn btn-success" href="{% url 'reporte_pdf_libro' %}" role="button">Exportar PDF</a> | <a name="" id="" class="btn btn-secondary" href="{% url 'exportar_excel' %}" role="button">Exportar EXCEL XLWT</a>
+        <p></p>
+        <a name="" id="" class="btn btn-success" href="" role="button">Importar EXCEL</a> | <a name="" id="" class="btn btn-success" href="" role="button">Importar CSV</a>
+        <p> </p>
+        <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar nuevo libro</a>
+<p></p>
+{% block barra_busqueda %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 search">
+            <form method="get">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value="{{ request.GET.buscar }}">
+                        <span class="input-group-list">
+                          <i class="icon icon-search"></i>
+                          <button type="submit" class="btn btn-success">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock barra_busqueda %}
+    <div class="card-body">
+        <h4 class="card-title">Libros</h4>
+       
+        <table class="table" id="bootstrapdatatable" width="100%">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkall"/></th>
+                    <th>ID</th>
+                    <th>TITULO</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>   
+                
+                {% for libro in libros %}
+                <tr>
+                    <td><input type="checkbox" id="checkall"/></td>
+                    <td>{{ libro.id }}</td>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.descripcion }}</td>
+                    <td> <a name="" id="" class="btn btn-info" href="{% url 'editar' libro.id %}" role="button">Editar</a> 
+                        | 
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' libro.id %}" role="button">Eliminar</a></td>
+                </tr>
+                {% endfor %}
+
+                
+                
+            </tbody>
+        </table>
+        
+        
+        {% include "libros/paginas.html" %}
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+
+{% endblock %}

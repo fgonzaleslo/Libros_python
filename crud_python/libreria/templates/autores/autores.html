@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de autores {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-secondary" href="{% url 'exportar_csv' %}" role="button">Exportar CSV</a>
+        <p> </p>
+        <p> </p>
+        <a name="" id="" class="btn btn-success" href="{% url 'crear_autor' %}" role="button">Agregar nuevo autor</a>
+<p></p>
+
+<div class="card-body">
+    <h4 class="card-title">Autores</h4>
+   
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRES</th>
+                <th>APELLIDOS</th>
+                <th>DNI</th>
+                <th>DIRECCIÓN</th>
+                <th>LIBRO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+
+
+        <tbody>   
+                
+            {% for autor in autores %}
+            <tr>
+                <td>{{ autor.id }}</td>
+                <td>{{ autor.nombres }}</td>
+                <td>{{ autor.apellidos }}</td>
+                <td>{{ autor.dni }}</td>
+                <td>{{ autor.direccion }}</td>
+                <td>{{ autor.libro_id }}</td>
+                <td> <a name="" id="" class="btn btn-info" href="{% url 'editar_autor' autor.id %}" role="button">Editar</a> 
+                    | 
+                    <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_autor' autor.id %}" role="button">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+
+</div>
+</div>
+
+{% endblock %}

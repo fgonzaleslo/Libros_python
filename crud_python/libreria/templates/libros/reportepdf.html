@@ -1,0 +1,25 @@
+<div class="card-body">
+    <h4 class="card-title">Libros</h4>
+   
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>   
+            
+            {% for libro in libros %}
+            <tr>
+                <td>{{ libro.id }}</td>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.descripcion }}</td>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+
+</div>
